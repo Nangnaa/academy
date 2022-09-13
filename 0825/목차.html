@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <style>
+  h1{
+    margin-top: 400px;
+  }
+
+  #result{
+    border: 5px solid black;
+  }
+  
+  </style>
+  </head>
+  <body>
+  <div id="result"></div>
+
+  <h1 id="콘텐츠-1">콘텐츠-one</h1>
+  <h1 id="콘텐츠-2">콘텐츠-two</h1>
+  <h1 id="콘텐츠-3">콘텐츠-three</h1>
+  <h1 id="콘텐츠-4">콘텐츠-four</h1>
+  <h1 id="콘텐츠-5">콘텐츠-five</h1>
+
+
+  <script src="../js/jquery-3.6.0.min.js"></script>
+  <script>
+    const list = $('h1');
+    const result = $('#result')
+    for (let i = 0; i < list.length; i++) {
+      let inText = $(list[i]).text();
+      let inId = $(list[i]).attr('id'); //id속성을 읽는다 콘텐츠-1~5 까지 읽음
+      //여기까지 데이터수집
+      // console.log(inText , inId);
+      result.append(`
+        <h2>
+          <a href="#${inId}">
+            ${i+1}. ${inText}
+          </a>
+        </h2>
+      `)
+    }
+
+   
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+body {
+	padding: 30px;
+}
+button, input {
+	width: 100px;
+	font-size: 40px;
+	text-align: center;
+}
+</style>
+</head>
+<body>
+
+<div>
+	<button class="minus">-</button>
+	<!-- <input id="count" type="number" value="3" min="1" max="10"> -->
+	<input id="count" type="number" value="3">
+	<button class="plus">+</button>
+</div>
+
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+const obj = $('#count')
+let min = Number(obj.attr('min')); //Number number로 데이터타입변환
+let max = Number(obj.attr('max')); //형변환한이유는 연산이 가능하도록 변환
+console.log(min, max); //1 10 min max를 읽어드림
+$('button').click(function(){
+   let num = Number(obj.val())
+  //  console.log(num); //위의 value가 3이라 3이 출력
+
+
+  /*
+  .attr( attributeName )은 요소(element)의 속성(attribute)의 
+  값을 가져오거나 속성을 추가합니다.
+
+  .attr( attributeName, value )
+  $( 'h1' ).attr( 'title', 'Hello' );
+  는 h1 요소에 title 속성을 추가하고 속성의 값은 Hello로 합니다.
+  */
+  if(obj.attr('min')== undefined){
+    min = 1; 
+    //읽지 못하는 상황이 올때는 1로 고정할 수있도록
+    //html에 min값을 정의를 해둔다면 그것에 따라 갈것이고 
+    //정의 하지 않았다면 최소값을 지정해두는것
+  }
+  //사용자가 + 를 눌렀는지 -를 눌렀는지
+  //클릭한 this 
+  //plus라는 클래스를 갖고있는가?
+  if($(this).hasClass('plus')){
+    obj.val(num + 1);
+    if(num >= max){
+      obj.val(max);
+    } //num이 10보다 크거나 같으면
+    //obj(count)의 val(가운데있는숫자) 는 max()에 멈춘다
+  }else if($(this).hasClass('minus')){
+    obj.val(num - 1);
+    if(num >= min){
+      obj.val(min);
+    }
+  }
+
+})
+</script>
+
+</body>
+</html>

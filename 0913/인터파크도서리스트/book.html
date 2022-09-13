@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>베스트셀러</title>
+</head>
+<style type="text/css">
+.wrap{
+    padding: 30px;
+}
+.wrap table th, .wrap table td {
+    border: 1px solid #000;
+    font-size: 16px;
+    line-height: 1.5;
+}
+.wrap table th{
+    background: #eee;
+}
+.wrap table th,.wrap table td{
+    padding: 10px;
+}
+.wrap table td span{
+    color: red;
+}
+</style>
+<body>
+
+<div class="wrap">
+    <h1></h1>
+    <table style="margin-top: 20px;">
+        <tr>
+            <th>표지</th>
+            <th>도서정보</th>
+        </tr>
+    </table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$.ajax({
+    url: 'bestSeller.json',
+    dataType: 'json',
+
+    success: function(data) {
+        console.log( data );
+        const item = data.item;
+        // console.log( item );
+        $('.wrap h1').append(`${data.title}`);
+        for(let i = 0; i < item.length; i++){
+            let categoryLable;
+            switch (item[i].categoryId) {
+                case '100': categoryLable = '국내도서'; break;
+                case '101': categoryLable = '국내도서 > 소설'; break;
+                case '102': categoryLable = '국내도서 > 시/에세이'; break;
+                case '103': categoryLable = '국내도서 > 예술/대중문화'; break;
+                case '104': categoryLable = '국내도서 > 사회과학'; break;
+                case '105': categoryLable = '국내도서 > 역사와 문화'; break;
+                case '107': categoryLable = '국내도서 > 잡지'; break;
+                case '108': categoryLable = '국내도서 > 만화'; break;
+                case '109': categoryLable = '국내도서 > 유아'; break;
+                case '110': categoryLable = '국내도서 > 아동'; break;
+                case '111': categoryLable = '국내도서 > 가정과 생활'; break;
+                case '112': categoryLable = '국내도서 > 청소년'; break;
+                case '113': categoryLable = '국내도서 > 초등학습서'; break;
+                case '114': categoryLable = '국내도서 > 고등학습서'; break;
+                case '115': categoryLable = '국내도서 > 국어/외국어/사전'; break;
+                case '116': categoryLable = '국내도서 > 자연과 과학'; break;
+                case '117': categoryLable = '국내도서 > 경제경영'; break;
+                case '118': categoryLable = '국내도서 > 자기계발'; break;
+                case '119': categoryLable = '국내도서 > 인문'; break;
+                case '120': categoryLable = '국내도서 > 종교/역학'; break;
+                case '122': categoryLable = '국내도서 > 컴퓨터/인터넷'; break;
+                case '123': categoryLable = '국내도서 > 자격서/수험서'; break;
+                case '124': categoryLable = '국내도서 > 취미/레저'; break;
+                case '125': categoryLable = '국내도서 > 전공도서/대학교재'; break;
+                case '126': categoryLable = '국내도서 > 건강/뷰티'; break;
+                case '128': categoryLable = '국내도서 > 여행'; break;
+                case '129': categoryLable = '국내도서 > 중등학습서'; break;
+            }
+            let html = `
+            <tr>
+                <td><img src="${item[i].coverSmallUrl}"></td>
+                <td>
+                    <span>[ ${categoryLable} ]</span><br>
+                    <a href="${item[i].link}" target="blank">${item[i].title}</a>
+                    <p>${item[i].description}</p>
+                </td>
+            </tr>
+            `;
+            $('.wrap table').append(html);
+        }
+    }
+})
+</script>
+
+</body>
+</html>

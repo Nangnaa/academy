@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+  <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
+
+  <style>
+    input {
+      font-size: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="tagInputArea">
+    <input type="text" name="tags" class="tagifyOutside" value="태그1, 태그2">
+  </div>
+  <div class="tagAddArea">
+    <button class="btnDefault action tagAddBtn">추가</button>
+    <span class="txt">* # 은 자동으로 출력됩니다. # 을 제외한 단어만 입력해주세요.</span>
+  </div>
+
+  <script src="../js/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="http://hwangsunsoo.com/customer/mando/admin/js/jquery-ui.min.js"></script>
+
+
+  <script>
+    const tagInput = document.querySelector('[name=tags]'); // 해시태그 입력
+    tagify = new Tagify(tagInput, {
+      maxTags: 5, // 5개까지 입력 가능
+    });
+    document.querySelector('.tagAddBtn').addEventListener('click', tagify.onAddTag.bind(tagify)) // 버튼 클릭 시 입력
+  </script>
+
+</body>
+
+</html>

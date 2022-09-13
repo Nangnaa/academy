@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box{
+      display: inline-block;
+      width: 200px;
+      height: 200px;
+      margin: 20px;
+      background-color: gray;
+    }
+    .category-1{
+      background-color: red;
+    }
+    .category-2{
+      background-color: blue;
+    }
+    .category-3{
+      background-color: green;
+    }
+  </style>
+</head>
+<body>
+  <!--Masonry
+    서로 다른 크기의 파일들을 랜덤하게 배치
+     Isotope
+    각각의 사진을 재배열하거나 해당하는 사진만 분류하는것
+    -->
+    <h1>hello</h1>
+    <div>
+      <button id="button-all">category all</button>
+      <button id="button-1">category 1</button>
+      <button id="button-2">category 2</button>
+      <button id="button-3">category 3</button>
+    </div>
+
+    <div class="boxArea">
+      <div class="box category-1"></div>
+      <div class="box category-3"></div>
+      <div class="box category-1"></div>
+      <div class="box category-3"></div>
+      <div class="box category-1"></div>
+      <div class="box category-1"></div>
+      <div class="box category-2"></div>
+      <div class="box category-1"></div>
+      <div class="box category-2"></div>
+      <div class="box category-2"></div>
+    </div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="http://hwangsunsoo.com/lecture/do_it_interactive/13/js/isotope.pkgd.min.js"></script>
+    <script>
+      const grid = new Isotope('.boxArea',{
+        ItemSelector : '.box', //박스특성
+        columWidth : '.box', //너비값
+        transitionDuration:'0.5s', //부드럽게 재배치 작아지면서 변경
+      })
+      $('#button-all').click(function(){
+        grid.arrange({
+          filter:'*' //전체 노출
+        })
+      })
+      $('#button-1').click(function(){
+        grid.arrange({
+          filter:'.category-1' //카테고리 1번 부드럽게 재배치
+        })
+      })
+      $('#button-2').click(function(){
+        grid.arrange({
+          filter:'.category-2' 
+        })
+      })
+      $('#button-3').click(function(){
+        grid.arrange({
+          filter:'.category-3' 
+        })
+      })
+    </script>
+
+</body>
+</html>

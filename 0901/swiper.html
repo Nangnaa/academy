@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
+  <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+  <style>
+    body {
+      margin: 0;
+    }
+
+    .swiper-container {
+      position: relative;
+      margin: 0 50px;
+    }
+    .swiper-wrapper{
+      overflow: hidden;
+    }
+    .swiper-slide {
+      height: 200px;
+      background-color: skyblue;
+      font-size: 24px;
+      text-align: center;
+    }
+
+    /* .swiper-pagination {} */
+
+    .swiper-horizontal>.swiper-pagination-bullets,
+    .swiper-pagination-bullets.swiper-pagination-horizontal {
+      bottom: -30px;
+      /* left: 0;
+      width: 100%; */
+    }
+    .swiper-button-prev:after, .swiper-button-next:after {
+      color: green;
+      
+    }
+    /* :root {
+      --swiper-theme-color: red;
+    } */
+  </style>
+</head>
+
+<body>
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">slide 1</div>
+      <div class="swiper-slide">slide 2</div>
+      <div class="swiper-slide">slide 3</div>
+      <div class="swiper-slide">slide 4</div>
+      <div class="swiper-slide">slide 5</div>
+      <div class="swiper-slide">slide 6</div>
+      <div class="swiper-slide">slide 7</div>
+      <div class="swiper-slide">slide 8</div>
+      <div class="swiper-slide">slide 9</div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+  <script>
+    const swiper = new Swiper('.swiper-container', {
+      slidesPerView: 3,//한번에 보이는 갯수
+      centeredSlides: false, //가운데부터 시작 기본값false 많이쓰이지않음
+      spaceBetween: 10, //슬라이드간 간격
+      pagination: {
+        el: '.swiper-pagination', //클래스지정
+        type: "fraction", //페이지네이션이 숫자로 
+      },
+      navigation:{
+        nextEl:'.swiper-button-next',
+        prevEl:'.swiper-button-prev',
+      }
+    });
+
+  </script>
+</body>
+
+</html>

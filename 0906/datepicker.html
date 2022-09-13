@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+  <!-- 기본달력 css -->
+  <style>
+    input{
+      font-size: 40px;
+    }
+
+  </style>
+</head>
+<body>
+  <input type="text" id="datepicker">
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="http://hwangsunsoo.com/customer/mando/admin/js/jquery-ui.min.js"></script>
+    
+
+    <script>
+     $('#datepicker').datepicker({
+      dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+      monthNames : [
+        '1월',
+        '2월',
+        '3월',
+        '4월',
+        '5월',
+        '6월',
+        '7월',
+        '8월',
+        '9월',
+        '10월',
+        '11월',
+        '12월'
+      ],
+      showMonthAfterYear: true, //년도 먼저 나오고 월이나옴
+      yearSuffix		: '년',
+    dateFormat		: 'yy.mm.dd',
+     })
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Sample</title>
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<link href="//hwangsunsoo.com/lecture/ex_2/labs/ajaxui_study/css/common.css" rel="stylesheet">
+	<style type="text/css">
+		.wrap ul li {
+			padding: 100px 20px;
+			background: #eee;
+			border: 1px solid #000;
+			font-size: 20px;
+			font-weight: bold;
+		}
+
+		.wrap button {
+			margin: 20px;
+			padding: 10px;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="wrap">
+		<ul>
+		</ul>
+		<button>More</button>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script type="text/javascript">
+
+		$.ajax({
+			url: "data1.html", // html 파일 내용을 데이터로 사용 
+			dataType: 'html', //파일형식
+			success: function (data) {
+				console.log(data); //data파일이 출력
+				// $('.wrap ul').append(data) //data파일이 들어갓다는것을 확인
+				const $data = $(data).siblings('li') //li들을 쓸수잇게 데이터형식변경
+
+				console.log($data); //data파일이 출력 
+				// 0: li  1:li 이런식으로 출력
+
+				let call = 1; //변수 선언해서 1로 초기화
+				function getData() {
+					for (let getNum = 0; getNum < 5 * call; getNum++) {
+						/*call은 처음 한번 돌때는 1로 돌아서 for문의 li데이터가 5가나오고
+						for문이 끝나서 나가며 call++로 call이 2가되어 끝이난다
+						그래서 밑의 버튼을 눌렀을 때 다시 getData가 실행이되는데 
+						그때 call은 2가되어서 5 *2가 되어서 10개의 데이터가 출력이되는것
+						*/
+						// console.log($data[getNum]);
+						$(".wrap ul").append($data[getNum]);
+					};
+					call++;
+					// console.log('called: '+call);
+				}
+				getData();
+
+				// 버튼으로 데이터 로드 (html에 button은 주석 해제)
+				$(".wrap button").on("click", getData);
+				//클릭할때마다 함수호출
+			}
+		});
+
+	</script>
+
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <style>
+   	a {
+			color: #fff
+		}
+
+		.header {
+			background: #333;
+			color: #fff;
+			padding: 20px;
+		}
+
+		.section {
+			text-align: center;
+			line-height: 300px;
+			background: #eee;
+		}
+
+		.box {
+			width: 100px;
+			height: 100px;
+			background: #999;
+			margin: 10px;
+			transition: all .5s;
+			display: inline-block;
+			vertical-align: middle;
+		}
+
+		.box.on {
+			width: 200px;
+			height: 200px;
+			background: #ff0000;
+			margin: 30px;
+			transform: rotate(90deg);
+		}
+  </style>
+  </head>
+  <body>
+    <!-- setInterval – 설정시간 간격을 두고 반복 실행 
+    settimeOut - 설정해둔시간만큼 지난 뒤 끝
+    -->
+
+     <div class="header"> 
+       <h1>logo</h1>
+      <div class="nav">
+        <a href="#">menu1</a>
+        <a href="#">menu2</a>
+        <a href="#">menu3</a>
+      </div>
+    </div> 
+    <div class="container">
+      <div class="section">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+      </div>
+  
+    </div>
+  <script src="../js/jquery-3.6.0.min.js"></script>
+  <script>
+    //초기 인덱스 변수 설정(초기화)
+    let idx = 0;
+    //3초에 한번씩 발생하는 setInterval 0 1 2 를 반복해서 for문을 돌리면
+    //3개의 박스를 지정 할 수 있다.
+    setInterval(function(){
+      //박스에 on클래스를 모두 삭제
+      $(".section .box").removeClass("on");
+      //인덱스변수값에 해당하는 박스에 on클래스를 추가
+      // eq(idx)로 0 1 2 를 찾는다
+      $('.section .box').eq(idx).addClass('on');
+      idx++;
+      //인덱스변수가 만약 3이되는 경우 다시 초기값 0으로 저장
+      if(idx === 3){
+        idx =0;
+      }
+      // console.log(idx);
+    },3000)
+//     $(function(){
+//     var idx = 0;
+//     setInterval(function(){
+//         $(".section .unit").removeClass("on");
+//         $(".section .unit").eq(idx).addClass("on");
+//         idx++;
+//         if(idx == 4){
+//             idx = 0;
+//         }
+//     }, 3000);
+// });
+
+  </script>
+</body>
+
+</html>

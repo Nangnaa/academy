@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>구글차트</title>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<style>
+  #exChart{
+    /* width: 500px; */
+  }
+</style>
+</head>
+
+<body>
+<div id="exChart"></div>
+
+<script>
+  google.charts.load('current', { 'packages': ['corechart'] });
+  google.charts.setOnLoadCallback(drawVisualization);
+  function drawVisualization() {
+    const data = google.visualization.arrayToDataTable([
+      ['일자', '문의수', '조회수'],
+      ['4/30', 5, 13],
+      ['5/1', 13, 27],
+      ['5/2', 20, 33],
+      ['5/3', 15, 17],
+      ['5/4', 12, 25],
+      ['5/5', 12, 20],
+      ['5/6', 15, 25],
+      ['5/7', 5, 45],
+    ]);
+    const options = {
+      title : '일자별 문의수 조회수 현황',
+      vAxis: {title: '문의수 / 조회수'}, //세로축 타이틀
+      hAxis: {title: '일자'}, //가로축
+      seriesType: 'bars', //타입이 바모양 그래프로 다바뀜
+      series: { 
+      0:{color:'#016098'},
+      1:{type:'line',pointShape:'circle',color:'#262626'} },
+      //0번째는 컬러만 남색계열로 바뀜
+      //1번쨰는 type라인 pointShape포인트부분에 동그랗게 붉은색으로 
+      pointSize: 7, //pointShape의 크기 
+      //
+    };
+    const chart = new google.visualization.ComboChart(document.getElementById('exChart'));
+    chart.draw(data, options);
+  }
+</script>
+</body>
+
+</html>

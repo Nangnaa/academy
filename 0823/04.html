@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>숨기기 나타내기</title>
+  <style>
+    .button{
+      position: relative;
+      
+      border: 10px solid green;
+      font-size: 60px;
+    }
+    .icon{
+      position: absolute;
+      top: 50%;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      margin-top:-40px ;
+      border: 10px solid blue;
+      border-width: 10px 10px 0 0;
+      transform: rotate(-45deg); 
+      /* 화살표 아래방향 */
+    }
+    .button.isFold ~ .list{
+      display: none;
+    }
+    .button.isFold .icon{
+      transform: rotate(135deg);
+      /* 화살표 위쪽방향 */
+    }
+    .list{
+      margin: 20px 0 0 0 ;
+      border: 10px solid red;
+      font-size: 60px;
+    }
+    
+  </style>
+  </head>
+  <body>
+    <div class="button isFold" >BUTTON
+      <span id="icon" class="icon"></span>
+    </div>
+    <ul class="list">
+      <li>ITEM</li>
+      <li>ITEM</li>
+      <li>ITEM</li>
+    </ul>
+    
+  <script src="../js/jquery-3.6.0.min.js"></script>
+  <script>
+    $('.button').click(function(){
+      $(this).toggleClass('isFold') //toggleClass 추가&삭제
+    })
+
+  </script>
+</body>
+
+</html>

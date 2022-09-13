@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Sample</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<link href="//hwangsunsoo.com/lecture/ex_2/labs/ajaxui_study/css/common.css" rel="stylesheet">
+<style type="text/css">
+.wrap{
+	padding: 30px;
+}
+.wrap table th, .wrap table td {
+	border: 1px solid #000;
+	font-size: 20px;
+}
+.wrap table th{
+	background: #eee;
+}
+.wrap table th,.wrap table td{
+	padding: 20px;
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+	<table>
+		<tr>
+			<th>직업</th>
+			<th>이름</th>
+			<th>성별</th>
+		</tr>
+	</table>
+	<br><br>
+	<input type="text" style="font-size: 20px;">
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+
+$.ajax({
+ url:'data2.json',
+ dataType:'json',
+ success:function(data){
+	console.log(data); //펼쳐야 볼수있는데
+	/*
+	 (5) [{…}, {…}, {…}, {…}, {…}]
+	Array(5)
+0: {job: '가수', name: '아이유', gender: '여'}
+1: {job: '가수', name: '수지', gender: '여'}
+2: {job: '배우', name: '김태리', gender: '여'}
+3: {job: '개그', name: '유재석', gender: '남'}
+4: {job: '배우', name: '송중기', gender: '남'}
+	 */
+	const tbl = $('.wrap table')
+	for (let i = 0; i < data.length; i++) { //data는 5개
+		console.log(data[i]); //데이터를 하나씩 뽑아냄 for문을 돌려서 
+		/*
+		{job: '가수', name: '아이유', gender: '여'}
+		gender: "여"
+		job: "가수"
+		name: "아이유"
+		[[Prototype]]: Object
+		*/
+		// console.log(data[i].job,data[i].name,data[i].gender);
+		tbl.append(`
+		<tr>
+			<td class="job">${data[i].job}</td>
+			<td class="name">${data[i].name}</td>
+			<td class="gender">${data[i].gender}</td>
+		<tr>
+		`)
+	}
+	$('input').on('keydown', function(){
+		let $this = $(this); //키다운이벤트가발생한 인풋자신
+		setTimeout(() => {
+			$('.job').each(function(){ //계속 반복
+				console.log($this.val(), $(this).text(), $this.val() == $(this).text() ); //키보드 칠때 나오는값이 log에 출력
+				//$(this).text() 입력한 값과 일치하는지 확인
+				if($this.val() == $(this).text()){
+					$(this).parent().show();
+				}else {
+					$(this).parent().hide();
+					//일치되는 직업을 가진 사람만 출력이되도록하는 코드
+				}
+				
+			})
+		}, 200);//키보드 시차때문에 발생하는 오차부정
+	})
+ }
+})
+
+</script>
+</body>
+</html>

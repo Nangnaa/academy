@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <style>
+    .area{
+      background-color: yellow;
+      padding: 30px;
+    }
+    .area span{
+      display: block; 
+      margin: 20px 0;
+      padding: 20px;
+      background-color: green;
+    }
+    .area span.test{background-color: hotpink;}
+  </style>
+  </head>
+  <body>
+    <h1>hello</h1>
+    <div class="area">
+      <span>TEXT</span>
+      <span>TEXT</span>
+      <span>TEXT</span>
+    </div>
+
+  <script src="../js/jquery-3.6.0.min.js"></script>
+  <script>
+    // $('.area > span').addClass('test');
+    // $('.area').eq(1).addClass('test');
+    // $('.area').next().addClass('test');
+    // $('.area').parent().addClass('test');
+    // $('.area').find('span').css('border','3px solid red'); //동적으로 inline-style 적용가능
+
+$('.area span').click(function(){
+  $(this).toggleClass('test');// on class 추가&삭제 this로 인해 클릭한 test만 동작
+})
+
+  </script>
+</body>
+
+</html>

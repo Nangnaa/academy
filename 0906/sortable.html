@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    td{
+      padding: 10px 60px;
+      border: 1px solid black;
+      font-size: 3opx;
+    }
+  </style>
+</head>
+<body>
+  <!--노래파일 = 눌러서 순서 변경할때 사용
+    -->
+    
+    <table >
+      <tbody id="sortable">
+      <tr>
+        <td>1</td>
+        <td>제목</td>
+        <td>내용</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>제목</td>
+        <td>내용</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>제목</td>
+        <td>내용</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>제목</td>
+        <td>내용</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>제목</td>
+        <td>내용</td>
+      </tr>
+    </tbody>
+    </table>
+  <script src="../js/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="http://hwangsunsoo.com/customer/mando/admin/js/jquery-ui.min.js"></script>
+
+  <script>
+    $('#sortable').sortable({
+      items:'> tr', //행을 기준으로 드래그 필수
+      handle:'td:first-child', //잡아끄는 용도 필수
+      axis:'y', //이동방향 좌우가 막힘
+      cursor:'move',//커서바뀜 
+      opacity:0.5, //투명도
+    })
+  </script>
+
+</body>
+</html>

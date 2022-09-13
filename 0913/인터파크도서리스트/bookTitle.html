@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>도서명 검색</title>
+</head>
+<style type="text/css">
+.wrap{
+    padding: 30px;
+}
+.wrap table th, .wrap table td {
+    border: 1px solid #000;
+    font-size: 16px;
+    line-height: 1.5;
+}
+.wrap table th{
+    background: #eee;
+}
+.wrap table th,.wrap table td{
+    padding: 10px;
+}
+.wrap table td span{
+    color: red;
+}
+</style>
+<body>
+
+<div class="wrap">
+    <p>도서명: <input id="bookTitle" type="text"><button id="search">검색</button></p>
+    <h1></h1>
+    <table style="margin-top: 20px;">
+        <tr>
+            <th>표지</th>
+            <th>도서정보</th>
+        </tr>
+    </table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$.ajax({
+    url: 'bestSeller.json',
+    dataType: 'json',
+
+    success: function(data) {
+        console.log( data );
+        var item = data.item;
+        // console.log( item );
+        $('.wrap h1').append(`${data.title}`);
+        $('#search').click(function(){
+            const bookTitleSearch = $('#bookTitle').val();
+            //input창 읽기
+            console.log(bookTitleSearch);
+            $('.wrap table').html(`
+                <tr>
+                    <th>표지</th>
+                    <th>도서정보</th>
+                </tr>
+            `);
+            for(var i = 0; i < item.length; i++){
+                console.log( item[i].title.match(bookTitleSearch) );
+                if(item[i].title.match(bookTitleSearch)){
+                    //매치가 되는 정보만 출력이되도록
+                    let html = `
+                    <tr>
+                        <td><img src="${item[i].coverSmallUrl}"></td>
+                        <td>
+                            <a href="${item[i].link}" target="blank">${item[i].title}</a><br>
+                            <span>${item[i].priceStandard}원</span>
+                        </td>
+                    </tr>
+                    `;
+                    $('.wrap table').append(html);
+                }
+            }
+        })
+    }
+})
+</script>
+
+</body>
+</html>

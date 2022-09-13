@@ -1,0 +1,284 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>누구덕</title>
+  <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="src/css/jquery.mCustomScrollbar.css">
+  <link rel="stylesheet" href="src/css/common.css">
+  <link rel="stylesheet" href="src/css/style.css">
+  <link rel="stylesheet" href="src/css/admin.css">
+  <script src="src/js/jquery-3.5.1.js"></script>
+  <script src="src/js/jqeruy-ui.js"></script>
+  <script src="src/js/mCustomScrollbar.concat.min.js"></script>
+  <script src="src/js/common.js"></script>
+  <script src="src/js/admin.js"></script>
+  <script type="text/javascript" src="src/js/gstatic-charts-loader.js"></script>
+</head>
+<body>
+  <div id="wrap">
+    <!-- header -->
+    <header class="hd navBar">
+      <div class="container">
+        <h1 class="navBarLogo">
+          <a href="">
+            <img src="src/img/logo_broker.svg" alt="누구덕 중개사">
+          </a>
+        </h1>
+        <span class="mode">일반 모드</span>
+        <nav>
+          <a href="">HOME</a>
+          <a class="act" href="">중개관리</a>
+          <div class="navBarProfile">
+            <span class="name">김지토</span>
+            <img class="imgProfile" src="src/img/sample_profile.svg" alt="프로필 사진">
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- // header -->
+    <!-- main -->
+    <section class="adminPage cb">
+      <!-- adminMenu -->
+      <div class="adminMenu">
+        <div class="pof">
+          <h2>중개관리</h2>
+          <ul>
+            <li class="linkBoard"><a href="">대시보드</a></li>
+            <li class="linkRegister"><a href="">매물등록</a></li>
+            <li class="linkManagement"><a href="">매물관리</a></li>
+            <li class="linkAccount act"><a href="">계정관리</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- // adminMenu -->
+      <!-- admimWrap -->
+
+		<div class="admimWrap account">
+			<div class="container">
+				<article>
+					<h3 class="adminTitle">대시보드</h3>
+
+					<div class="dashBoardArea">
+						<div class="boardLeft">
+							<div class="myAccount">
+								<img src="src/img/label_certification_after_2.svg" class="label" alt="인증완료">
+								<div class="profile">
+									<img src="src/img/bg_profile_white.svg" alt="프로필이미지">
+								</div>
+								<div class="office">스매치공인중개사사무소</div>
+								<div class="name">대표공인중개사 김지토</div>
+								<div class="buttonArea">
+									<a href="#" class="buttonUpdate">계정정보 수정</a>
+									<a href="#" class="buttonAdd">계정 추가 +</a>
+								</div>
+							</div>
+							<div class="circleGraph">
+								<strong class="boardTitle">매물 등록 현황</strong>
+								<div class="circleGraphDraw" style="background: conic-gradient(#F84B03 0% 14%, #00629B 14% 100%);">
+									<p class="circleGraphDrawInner"><span class="graphLabel">보유매물</span><strong class="graphTotal">856건</strong></p>
+								</div>
+								<div class="circleGraphLegend">
+									<p class="item"><i class="bullet" style="background:#00629B;"></i><strong class="name">오피스</strong><span class="desc">248건(86%)</span></p>
+									<p class="item"><i class="bullet" style="background:#F84B03;"></i><strong class="name">상가</strong><span class="desc">198건(14%)</span></p>
+								</div>
+							</div>
+						</div>
+						<div class="boardRight">
+							<div class="selectBox">
+								<input type="hidden" id="selectVal">
+								<p class="select">전체 계정</p>
+								<ul class="option">
+									<li>전체 계정</li>
+									<li>대표공인중개사 <strong>김지토</strong></li>
+									<li>중개보조원 <strong>주주드</strong></li>
+								</ul>
+							</div>
+							<!-- <div class="monthlyStatus">
+								<strong class="boardTitle">최근 30일 통계</strong>
+								<div class="period">2021.03.06 ~ 2021.05.06</div>
+								<div class="statusTable">
+									<div class="row">
+										<div class="col">
+											<span class="label">업로드 수</span>
+											<span class="number">120</span>
+										</div>
+										<div class="col">
+											<span class="label">조회 수</span>
+											<span class="number">1,827</span>
+										</div>
+										<div class="col">
+											<span class="label">받은 문의</span>
+											<span class="number">46</span>
+										</div>
+										<div class="col">
+											<span class="label">문의율</span>
+											<span class="number">1.4%</span>
+										</div>
+									</div>
+								</div>
+								<div class="blur">
+									<p class="inner"><span class="eng">Comming Soon!</span><br><span class="kor">오픈 준비중입니다.</span></p>
+								</div>
+							</div>
+							<div class="stickGraph">
+								<strong class="boardTitle">기간별 통계 보기</strong>
+								<div id="stickGraphSample" class="stickGraphDraw"></div>
+								<script type="text/javascript">
+								  google.charts.load('current', {'packages':['corechart']});
+								  google.charts.setOnLoadCallback(drawVisualization);
+								  function drawVisualization() {
+									var data = google.visualization.arrayToDataTable([
+									  ['일자','문의수','조회수'],
+									  ['4/30', 5, 13],
+									  ['5/1', 13, 27],
+									  ['5/2', 20, 33],
+									  ['5/3', 15, 17],
+									  ['5/4', 12, 25],
+									  ['5/5', 12, 20],
+									  ['5/6', 15, 25],
+									]);
+									var options = {
+									  title : '일간',
+									  vAxis: {title: '문의수'},
+									  hAxis: {title: '일자'},
+									  seriesType: 'bars',
+									  series: { 0:{color:'#FC4C02'}, 1:{type:'line',pointShape:'circle',color:'#262626'} },
+									  pointSize: 7,
+									};
+									var chart = new google.visualization.ComboChart(document.getElementById('stickGraphSample'));
+									chart.draw(data, options);
+								  }
+								</script>
+								<div class="period">
+									2021. 04. 30 ~ 2021. 05. 06
+									<a href="#" class="buttonPrev"><span class="blind">이전</span></a>
+									<a href="#" class="buttonNext"><span class="blind">다음</span></a>
+								</div>
+								<div class="buttonArea">
+									<a href="#" class="buttonDay isActive">일간</a>
+									<a href="#" class="buttonMonth">월간</a>
+								</div>
+								<div class="blur">
+									<p class="inner"><img src="src/img/icon_commingsoon.svg" alt="이미지"><span class="eng">Comming Soon!</span><br><span class="kor">오픈 준비중입니다.</span></p>
+								</div>
+							</div> -->
+							<div class="monthlyStatus">
+								<strong class="boardTitle">최근 30일 통계</strong>
+								<div class="period">2021.03.06 ~ 2021.05.06</div>
+								<div class="statusTable">
+									<div class="row">
+										<div class="col">
+											<span class="label">업로드 수</span>
+											<span class="number">120</span>
+										</div>
+										<div class="col">
+											<span class="label">조회 수</span>
+											<span class="number">1,827</span>
+										</div>
+										<div class="col">
+											<span class="label">받은 문의</span>
+											<span class="number">46</span>
+										</div>
+										<div class="col">
+											<span class="label">문의율</span>
+											<span class="number">1.4%</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="stickGraph">
+								<strong class="boardTitle">기간별 통계 보기</strong>
+								<div id="stickGraphDay" class="stickGraphDraw"></div>
+								<script type="text/javascript">
+								  google.charts.load('current', {'packages':['corechart']});
+								  google.charts.setOnLoadCallback(drawVisualization);
+								  function drawVisualization() {
+									var data = google.visualization.arrayToDataTable([
+									  ['일자','문의수','조회수'],
+									  ['4/30', 5, 13],
+									  ['5/1', 13, 27],
+									  ['5/2', 20, 33],
+									  ['5/3', 15, 17],
+									  ['5/4', 12, 25],
+									  ['5/5', 12, 20],
+									  ['5/6', 15, 25],
+									]);
+									var options = {
+									  title : '일간',
+									  vAxis: {title: '문의수'},
+									  hAxis: {title: '일자'},
+									  seriesType: 'bars',
+									  series: { 0:{color:'#FC4C02'}, 1:{type:'line',pointShape:'circle',color:'#262626'} },
+									  pointSize: 7,
+									};
+									var chart = new google.visualization.ComboChart(document.getElementById('stickGraphDay'));
+									chart.draw(data, options);
+								  }
+								</script>
+								<div class="period">
+									2021. 04. 30 ~ 2021. 05. 06
+									<a href="#" class="buttonPrev"><span class="blind">이전</span></a>
+									<a href="#" class="buttonNext"><span class="blind">다음</span></a>
+								</div>
+								<div class="buttonArea">
+									<a href="#" class="buttonDay isActive">일간</a>
+									<a href="#" class="buttonMonth">월간</a>
+								</div>
+							</div>
+							<div class="stickGraph">
+								<strong class="boardTitle">기간별 통계 보기</strong>
+								<div id="stickGraphMonth" class="stickGraphDraw"></div>
+								<script type="text/javascript">
+								  google.charts.load('current', {'packages':['corechart']});
+								  google.charts.setOnLoadCallback(drawVisualization);
+								  function drawVisualization() {
+									var data = google.visualization.arrayToDataTable([
+									  ['일자','문의수','조회수'],
+									  ['4/30', 5, 13],
+									  ['5/1', 13, 27],
+									  ['5/2', 20, 33],
+									  ['5/3', 15, 17],
+									  ['5/4', 12, 25],
+									  ['5/5', 12, 20],
+									  ['5/6', 15, 25],
+									]);
+									var options = {
+									  title : '일간',
+									  vAxis: {title: '문의수'},
+									  hAxis: {title: '일자'},
+									  seriesType: 'bars',
+									  series: { 0:{color:'#016098'}, 1:{type:'line',pointShape:'circle',color:'#262626'} },
+									  pointSize: 7,
+									};
+									var chart = new google.visualization.ComboChart(document.getElementById('stickGraphMonth'));
+									chart.draw(data, options);
+								  }
+								</script>
+								<div class="period">
+									2021. 04. 30 ~ 2021. 05. 06
+									<a href="#" class="buttonPrev"><span class="blind">이전</span></a>
+									<a href="#" class="buttonNext"><span class="blind">다음</span></a>
+								</div>
+								<div class="buttonArea">
+									<a href="#" class="buttonDay">일간</a>
+									<a href="#" class="buttonMonth isActive">월간</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</article>
+			</div>
+		</div>
+
+      <!-- // admimWrap -->
+    </section>
+    <!-- // main -->
+  </div>
+</body>
+</html>

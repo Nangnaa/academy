@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>fullPage</title>
+<link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css">
+<link rel="stylesheet" type="text/css" href="css/index.css">
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/jquery.fullPage.js"></script>
+
+<style>
+  /* #fullpage .section:nth-child(1){
+    background-image: url('images/bg1.jpg');
+  } */
+  /* #fullpage .section:nth-child(2){
+    background-image: url('images/bg2.jpg');
+  }
+  #fullpage .section:nth-child(3){
+    background-image: url('images/bg3.jpg');
+  }
+  #fullpage .section:nth-child(4){
+    background-image: url('images/bg4.jpg');
+  } */
+</style>
+</head>
+<body>
+  <ul id="menu">
+    <li><a href="#intro">소개</a></li>
+    <li><a href="#work">작업물</a></li>
+    <li><a href="#contact">연락처</a></li>
+    <li><a href="#etc">기타</a></li>
+    <li><a href="#p5">기타</a></li>
+  </ul>
+  <div id="fullpage">
+    <div class="section">
+      <h1 id="slogan">이청우 포트폴리오</h1>
+      <p>안녕하세요</p>
+    </div>
+    <div class="section">
+      <div class="slide">
+        <img src="./images/bg1.jpg" alt="">
+        <p>작업물 1</p>
+      </div>
+      <div class="slide">
+        <img src="./images/bg2.jpg" alt="">
+        <p>작업물 2</p>
+      </div>
+      <div class="slide">
+        <img src="./images/bg3.jpg" alt="">
+        <p>작업물 3</p>
+      </div>
+    </div>
+    <div class="section">
+      <div class="stick-area">
+        <span id="stick-1" class="stick" > </span>
+      </div>
+      <p>HTML 70%</p>
+      <div class="stick-area">
+        <span id="stick-2" class="stick" > </span>
+      </div>
+      <p>CSS 50%</p>
+    </div>
+    <div class="section">
+      <div id="circle-1" class="circle-area"></div>
+        <p>HTML 70%</p>
+    </div>
+    <div class="section">
+      <div id="box-1" class="box"></div>
+      <div id="box-2" class="box"></div>
+      <div id="box-3" class="box"></div>
+      <div id="box-4" class="box"></div>
+    </div>
+  </div>
+
+  <script>
+  $('#fullpage').fullpage({
+    menu: '#menu', //anchors메뉴 지정
+    anchors:['intro','work','contact','etc','p5'], //클릭하면 그페이지이동
+    sectionsColor:['pink', 'lightgreen','gray','yellow'],
+    navigation:true,
+    // navigationPosition:'left', //기본값 right
+    autoScrolling:true, //스크롤단위로 넘기기 기본값 true
+    slidesNavigation:true,
+    // loopTop:true, //스크롤이 맨밑에 있을때 스크롤내리면 맨위로
+    loopBottom:true,//스크롤 첫페이지에서 올릴때 맨마지막으로
+
+    afterLoad: function(anchorLink, index){
+      // console.log(anchorLink, index); //페이지가 열리면 실행
+      if(index == 1){
+        $('#slogan').animate({
+          marginTop:'-300px',
+          // marginBottom:'-300px',
+          // marginLeft:'-300px',
+
+        },3000) //h1이 1초동안 올라가는
+      }
+      if(index == 3){
+        // console.log('3page');
+        $('#stick-1').animate({
+          width:'70%'
+        },3000)
+        $('#stick-2').animate({
+          width:'50%'
+        },3000)
+      }
+      if(index == 4){
+        // console.log('4page');
+        let idx1 = 0;
+        const circleDraw = setInterval(function(){
+          idx1++;
+          // console.log(idx1);
+          $('#circle-1').css('background',`conic-gradient(red 0% ${idx1}%, blue ${idx1}% 100%)`)
+          if(idx1 === 70){
+            clearInterval(circleDraw)
+          }
+        },10)
+      }
+      if(index == 5){
+        // console.log('5page');
+        setTimeout(function(){
+          $('#box-1').animate({
+            opacity:'1',
+            marginBottom:'100px',
+          },500)
+        },500)
+        setTimeout(function(){
+          $('#box-2').animate({
+            opacity:'1',
+            marginBottom:'100px',
+          },500)
+        },1000)
+      }
+      setTimeout(function(){
+          $('#box-3').animate({
+            opacity:'1',
+            marginBottom:'100px',
+          },500)
+        },1500)
+        setTimeout(function(){
+          $('#box-4').animate({
+            opacity:'1',
+            marginBottom:'100px',
+          },500)
+        },2000)
+      // if(anchorLink == 'intro'){
+      //   console.log('1page');
+      // }
+    },
+    /**
+     *index 현재 인덱스
+     *nextIndex 이동한 인덱스
+     *direction 이동한 방향 up & down
+     */
+    onLeave: function(index, nextIndex, direction){
+      // console.log(index, nextIndex, direction); 
+      if(index == 1){
+        $('#slogan').css({
+          marginTop:'0', //다른페이지에 갔다가 다시 돌아왔을때 다시 애니메이션이 작동
+        })
+      }
+      if(index == 3){
+        $('#stick-1').width(0)
+        $('#stick-2').width(0)
+      }
+      
+      if(index == 5){
+        $('.box').css({
+          opacity:'0',
+          marginBottom:'0',
+        })
+      }
+
+    }
+  }) //fullpage
+ 
+  </script>
+</body>
+</html>

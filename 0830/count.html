@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <link href="http://hwangsunsoo.com/lecture/ex_2/class_5_complete/css/reset.css" rel="stylesheet" type="text/css" />
+<link href="http://hwangsunsoo.com/lecture/ex_2/class_5_complete/css/01_counter.css" rel="stylesheet" type="text/css" />
+  <style>
+
+  </style>
+  </head>
+  <body>
+    <div class="box_counter">
+      <div class="txt_Number">0</div>
+      <div class="box_btn">
+        <a href="#" class="btn_start">시작</a>
+        <a href="#" class="btn_stop">스톱</a>
+        <a href="#" class="btn_reset">리셋</a>
+      </div>
+    </div>
+  <script src="../js/jquery-3.6.0.min.js"></script>
+  <script>
+    let current = 0;//현재 카운트를 저장하는 변수
+    let saveInt; //setInterval 저장하는 변수
+    const txtNumber = $('.txt_Number')
+    // 시작
+   $('.btn_start').click(function(){
+    clearInterval(saveInt); //중복으로 누를경우 더 빨라지는데 중복으로 누를경우 잠깐 멈칫하다가 1초뒤 다시 동작
+    saveInt = setInterval(function(){
+      current++; //count 변수(current)를 증가시킴
+      // console.log(current);
+      txtNumber.text(current) //화면의 숫자가 올라가도록
+    },1000)
+   })
+   //스톱
+   $('.btn_stop').click(function(){
+    clearInterval(saveInt);
+  })
+  //리셋
+  $('.btn_reset').click(function(){
+    clearInterval(saveInt);
+    current = 0; //내부상으로만 멈춤(count변수 초기화)
+    txtNumber.text(current) //내부상의 데이터를 화면으로도 출력
+  })
+  </script>
+</body>
+
+</html>

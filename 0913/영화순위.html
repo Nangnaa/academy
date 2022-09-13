@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Sample</title>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  <link href="//hwangsunsoo.com/lecture/ex_2/labs/ajaxui_study/css/common.css" rel="stylesheet">
+  <style type="text/css">
+    body {
+      padding: 30px;
+    }
+
+    .wrap h1 {
+      margin-bottom: 40px;
+    }
+
+    .wrap table {
+      margin-top: 30px;
+    }
+
+    .wrap table th,
+    .wrap table td {
+      border: 1px solid #000;
+      font-size: 20px;
+      line-height: 1.5;
+    }
+
+    .wrap table th {
+      background: #eee;
+    }
+
+    .wrap table th,
+    .wrap table td {
+      padding: 20px;
+    }
+
+    input {
+      height: 30px;
+      font-size: 20px;
+      text-indent: 10px;
+    }
+
+    button {
+      height: 34px;
+      padding: 0 20px;
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    p {
+      margin-top: 10px;
+      font-size: 17px;
+    }
+
+    .error {
+      margin-top: 30px;
+      font-size: 20px;
+      line-height: 1.5;
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="wrap">
+    <h1>일간 박스오피스 검색</h1>
+    <input type="text" id="targetDateInput" value="20220701">
+    <button id="targetDateInputButton">검색</button>
+    <p>20040101 ~ 어제날짜까지</p>
+    <table>
+    </table>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript">
+
+    function movieRank(){
+      const targetDate = $('#targetDateInput').val();
+
+      $.ajax({
+        url: 'http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=f5eef3421c602c6cb7ea224104795888&targetDt=' + targetDate,
+        dataType: 'json',
+        success: function (data) {
+          // console.log(data);
+          if (data.faultInfo) {
+            $('.wrap table').html(`
+            <tr>
+              <td class="error">
+                  ${data.faultInfo.message} 
+                </td>
+            </tr>
+            `)//데이터안에 들어있는 오류 메세지 날짜형식이 맞지않을때 뜨는메세지
+          } else {
+            const rank = data.boxOfficeResult.dailyBoxOfficeList;
+            //append가아니라 html을 넣어서 table을 초기화시켜준다
+            $('.wrap table').html(`
+            <tr>
+              <th>순위</th>
+              <th>제목</th>
+              <th>개봉일</th>
+            </tr>
+            `)
+            for (let i = 0; i < rank.length; i++) {
+              $('.wrap table').append(`
+            <tr>
+              <td>${rank[i].rank}</td>
+              <td>${rank[i].movieNm}</td>
+              <td>${rank[i].openDt}</td>
+            </tr>
+            `)
+
+            }
+          }
+
+        }
+      })
+  }
+
+  $('#targetDateInputButton').click(function(){
+    movieRank()
+  })
+
+  $('#targetDateInput').keypress(function(){
+    if(event.ketCode == 13){
+      movieRank()
+    }//enter키
+  })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <style>
+    body{
+      margin: 0;
+    }
+    .header{
+      height: 200px;
+      background-color: gray;
+    }
+    .menu{
+      height: 80px;
+      background-color: hotpink;
+    }
+    .isScroll .menu{
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+
+    }
+    .isScroll .wrap{
+      margin-top: 80px;
+    }
+  </style>
+  </head>
+  <body>
+    <div class="wrap">
+
+    
+  <!-- 스크롤이 특정부분에 지나면 멈추는 -->
+  <header class="header">head</header>
+  <nav class="menu">menu</nav>
+  <h1>hello</h1>
+  <p>scroll 선택한 요소에서 스크롤을 위아래로 이동시켰을때 발생</p>
+  <p>scroll 선택한 요소에서 스크롤을 위아래로 이동시켰을때 발생</p>
+  <p>scroll 선택한 요소에서 스크롤을 위아래로 이동시켰을때 발생</p>
+  <p>scroll 선택한 요소에서 스크롤을 위아래로 이동시켰을때 발생</p>
+  <p>scroll 선택한 요소에서 스크롤을 위아래로 이동시켰을때 발생</p>
+  <p>scroll 선택한 요소에서 스크롤을 위아래로 이동시켰을때 발생</p>
+  <p>scroll 선택한 요소에서 스크롤을 위아래로 이동시켰을때 발생</p>
+  <p>scroll 선택한 요소에서 스크롤을 위아래로 이동시켰을때 발생</p>
+  <p>scroll 선택한 요소에서 스크롤을 위아래로 이동시켰을때 발생</p>
+  <p>scroll 선택한 요소에서 스크롤을 위아래로 이동시켰을때 발생</p>
+  <p>scroll 선택한 요소에서 스크롤을 위아래로 이동시켰을때 발생</p>
+  <p>scroll 선택한 요소에서 스크롤을 위아래로 이동시켰을때 발생</p>
+  <p>scroll 선택한 요소에서 스크롤을 위아래로 이동시켰을때 발생</p>
+  <p>scroll 선택한 요소에서 스크롤을 위아래로 이동시켰을때 발생</p>
+  <p>scroll 선택한 요소에서 스크롤을 위아래로 이동시켰을때 발생</p>
+</div>
+  <script src="../js/jquery-3.6.0.min.js"></script>
+  <script>
+   const tabMenuOffsetTopValue = $('.menu').offset().top;
+  //  console.log(tabMenuOffsetTopValue); //header 높이가 200px라 200
+   //scrolltop이 header의 높이가 오기전에 멈추기위해 거리를 구한것
+   $(window).scroll(function(){
+    let scrollTopValue = $(this).scrollTop();
+    // console.log(scrollTopValue); 스크롤을 내린만큼의 height높이
+    if(scrollTopValue> tabMenuOffsetTopValue){
+      $('body').addClass('isScroll');
+    }else{
+      $('body').removeClass('isScroll');
+
+    }
+   })
+  </script>
+</body>
+
+</html>

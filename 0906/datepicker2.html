@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>뉴스 관리</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+<link href="http://hwangsunsoo.com/customer/mando/admin/css/admin.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="http://hwangsunsoo.com/customer/mando/admin/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="http://hwangsunsoo.com/customer/mando/admin/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="http://hwangsunsoo.com/customer/mando/admin/js/admin_script.js"></script>
+</head>
+<body>
+
+<div id="wrapper" class="wrapper">
+	<!-- <header id="gnb">
+		<script>$('#gnb').load('include/gnb.html');</script>
+	</header> -->
+	
+	<section id="container" class="container">
+		<!-- 컨텐츠 시작 --->
+		<!-- <div id="snb" class="snb">
+			<script>$('#snb').load('include/snb.html #snb_1');</script>
+		</div> -->
+		
+		<div id="contents" class="contents">
+			<h1 class="titDep1">메인팝업 관리</h1>
+
+			<div class="">
+				<table class="selectSearch">
+					<colgroup>
+						<col style="width:15%">
+						<col style="width:15%">
+						<col style="width:auto">
+					</colgroup>
+					<tbody>
+						<tr>
+							<th scope="row">언어<span class="ness">*</span></th>
+							<td colspan="2">
+								<span class="frmInp"><input type="radio" id="langKo" name="langSelect" checked><label for="langKo">국문</label></span>
+								<span class="frmInp"><input type="radio" id="langEn" name="langSelect"><label for="langEn">영문</label></span>
+							</td>
+						</tr>
+						<tr>
+							<th scope="row">게시상태<span class="ness">*</span></th>
+							<td colspan="2">
+								<span class="frmInp"><input type="radio" id="openYes" name="openYN" checked><label for="openYes">게시</label></span>
+								<span class="frmInp"><input type="radio" id="openNo" name="openYN"><label for="openNo">미게시</label></span>
+							</td>
+						</tr>
+						<tr>
+							<th scope="row">제목<span class="ness">*</span></th>
+							<td colspan="2"><input type="text" style="width:100%"></td>
+						</tr>
+						<tr>
+							<th scope="row">URL</th>
+							<td colspan="2"><input type="text" style="width:100%"></td>
+						</tr>
+						<tr>
+							<th scope="row">게시기간</th>
+							<td colspan="2">
+								<ul class="dataSearch">
+									<li><input type="text"><button type="button" class="cal">날짜 선택</button></li>
+									<li class="dash">~</li>
+									<li><input type="text"><button type="button" class="cal">날짜 선택</button></li>
+								</ul>
+							</td>
+						</tr>
+						<tr>
+							<th rowspan="4" scope="row">팝업 이미지<span class="ness">*</span></th>
+							<th scope="row">PC 이미지</th>
+							<td>
+								<span class="inputFile">
+									<input type="text" class="inputName" placeholder="선택된 파일 없음" value="선택한 파일명" readonly="" style="width:500px"> 
+									<span class="inputUpload">
+										<input type="file" id="">
+										<label for="" class="btnFile">파일 선택</label>
+									</span>
+									<button type="button" class="fileReset">파일 지우기</button> 
+								</span>
+								<div class="imgInfo">
+									<p class="txt">* 권장 규격 사이즈는 000px * 000px 입니다.</p>
+									<p class="txt">* JPG, JPEG, PNG 형식의 파일만 첨부 가능합니다.</p>
+									<p class="txt">* 첨부파일 용량은 파일 10MB를 초과하실 수 없습니다.</p>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th scope="row" style="border-left:1px solid #ddd;">PC 이미지 Alt 값</th>
+							<td><input type="text" value="" style="width:100%"></td>
+						</tr>
+						<tr>
+							<th scope="row" style="border-left:1px solid #ddd;">MO 이미지</th>
+							<td>
+								<span class="inputFile">
+									<input type="text" class="inputName" placeholder="선택된 파일 없음" value="선택한 파일명" readonly="" style="width:500px"> 
+									<span class="inputUpload">
+										<input type="file" id="">
+										<label for="" class="btnFile">파일 선택</label>
+									</span>
+									<button type="button" class="fileReset">파일 지우기</button> 
+								</span>
+								<div class="imgInfo">
+									<p class="txt">* 권장 규격 사이즈는 000px * 000px 입니다.</p>
+									<p class="txt">* JPG, JPEG, PNG 형식의 파일만 첨부 가능합니다.</p>
+									<p class="txt">* 첨부파일 용량은 파일 10MB를 초과하실 수 없습니다.</p>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th scope="row" style="border-left:1px solid #ddd;">MO 이미지 Alt 값</th>
+							<td><input type="text" value="" style="width:100%"></td>
+						</tr>
+						<tr>
+							<th scope="row">순위</th>
+							<td colspan="2">1</td>
+						</tr>
+						<tr>
+							<th scope="row">등록일</th>
+							<td colspan="2">2021.12.06</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<div class="btns">
+					<div class="btnLeft">
+						<a href="#" class="btnDefault">목록</a>
+					</div>
+					<button type="submit" class="btnDefault">취소</button>
+					<button type="reset" class="btnDefault action">수정</button>
+				</div>
+			</div>
+
+		</div>
+	</section>
+</div>
+
+<script>
+
+</script>
+
+<style>
+.container {
+	padding-left: 30px;
+}
+</style>
+
+</body>
+</html>

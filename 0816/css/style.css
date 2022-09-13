@@ -1,0 +1,130 @@
+@charset "UTF-8";
+
+@import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css');
+@import url('http://fonts.googleapis.com/earlyaccess/nanummyeongjo.css');
+
+
+.wrap{
+  padding: 24px 24px 50px;
+  font-family: 'NanumGothic', 'Nanum Gothic', 'sans-serif';
+  font-size: 14px;
+  line-height: 1.2;
+  color: #222;
+}
+
+.header{
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.header-title {
+  margin-bottom: 24px;
+  font-family: 'NanumMyeongjo', 'Nanum Myeongjo', 'sans-serif';
+  font-size: 24px;
+}
+.header-picture-image {
+  width: 100%;
+  max-width: 150px;
+  vertical-align: top;
+}
+.content {
+  position: relative;
+}
+ .section {
+  position: relative;
+  margin-top: 60px;
+}
+.section-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+.article {
+  margin-top: 24px;
+}
+.section-title + .article { 
+  /* section-title바로 다음에오는 article만적용 */
+  margin-top: 6px;
+  padding-top: 24px;
+  border-top: 3px solid #222;
+}
+.article-title {
+  position: relative;
+  font-weight: bold;
+}
+.article-list {
+  list-style: disc;
+  padding-left: 18px;
+}
+.article-item {
+  margin-top: 6px;
+}
+.article-text {
+  margin-top: 6px;
+ }
+
+ .footer {
+  margin-top: 60px;
+  padding-top: 12px;
+  border-top: 1px solid #e9e9e9;
+  font-size: 12px;
+  color: #999;
+  text-align: right;
+} 
+
+@media (min-width: 600px) {
+
+  .wrap {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 50px 50px 100px;
+  }
+  .header::after {
+      content: '';
+      display: block;
+      clear: both;
+  }
+  /* .header{
+    overflow:hidden;
+    float로 밀려올라가는것을 방지 ::after또한 마찬가지
+  }
+    */
+  .header-title {
+      float: left;
+      width: 70%;
+  }
+  .header-picture {
+      float: right;
+      width: 28%;
+  }
+  .header-picture-image {
+      max-width: 100%;
+  }
+  .section::after {
+      content: '';
+      display: block;
+      clear: both;
+  }
+  .section-title {
+      position: sticky;
+      /* 경력학력부분이 스크롤을 내릴때 따라오게만듦 */
+      /* 
+      sticky 박스는 top, right, bottom, left 속성이 필수입니다.
+      fixed 박스는 뷰포트에 고정하지만 sticky 박스는 scroll 박스에 고정합니다. 
+      즉, scroll 박스가 offset 기준입니다.
+      */
+      top: 10px;
+      float: left;
+      width: 28%;
+      padding-top: 12px;
+      border-top: 3px solid #222;
+  }
+  .article {
+      float: right;
+      width: 70%;
+  }
+  .section-title + .article {
+      margin-top: 0;
+      padding-top: 12px;
+  }
+}
+/* /min-width: 600px */

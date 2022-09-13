@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+</head>
+<body>
+  
+  <script>
+  // let
+  // let은 선언하고 나중에 값을 할당이 가능하지만
+let dd
+dd = 'test'
+// let a = 'test'
+// let a = 'test2' // Uncaught SyntaxError: Identifier 'a' has already been declared
+a = 'test3'	 // 가능
+c = 'test' // ReferenceError: c is not defined
+let c
+
+
+// const
+// const 선언과 동시에 값을 할당 해야한다.
+// const aa // Missing initializer in const declaration
+// const b = 'test'
+// const b = 'test2' // Uncaught SyntaxError: Identifier 'a' has already been declared
+b = 'test3'	// Uncaught TypeError:Assignment to constant variable.
+  </script>
+</body>
+</html>

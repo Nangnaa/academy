@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <style>
+    .starArea{
+      padding: 30px;
+    }
+    .star{
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+      background-image: url('http://hwangsunsoo.com/customer/tripcody/images/icon-shopping-star-big-gray.svg');
+      background-size: 100% auto;
+    }
+    .star.on{
+      background-image: url('http://hwangsunsoo.com/customer/tripcody/images/icon-shopping-star-big-yellow.svg');
+    }
+    .score{
+      display: inline-block;
+      margin-left: 20px;
+      font-size: 60px;
+    }
+  </style>
+  </head>
+  <body>
+   <div class="starArea">
+    <span class="star on"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <strong class="score"></strong>
+   </div>
+
+  <script src="../js/jquery-3.6.0.min.js"></script>
+  <script>
+    const score = 2;
+    const star = $('.starArea .star'); //모든 별을 star에 넣고
+
+    //Math.round Math.cell Math.floor
+    for (let i = 0; i < Math.round(score); i++) {
+      star.eq(i).addClass('on');
+      //eq()
+      //-선택한 요소의 인덱스 번호에 해당하는 요소를 찾는다.
+      //-없으면 null을 반환한다.
+    }
+    // console.log(star);
+    $('.starArea .score').html(score);
+    //저장한 수치를 변수로 넣어서 html에 출력
+    
+
+  </script>
+</body>
+
+</html>

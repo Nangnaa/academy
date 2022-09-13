@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>숨기기 나타내기</title>
+  <style>
+    .popup{
+      display: none;
+      position: fixed;
+      z-index: 10;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    .popup .inner{
+      position: absolute;
+      top: 50%; 
+      /* 위쪽에서부터 50% 내려옴 */
+      left: 50%;
+      /* 왼쪽으로부터 50% 오른쪽으로 이동 */
+      width: 300px;
+      height: 400px;
+      background-color: white;
+      transform: translate(-50%, -50%); 
+      /* 왼쪽으로 위쪽으로 절반씩 떙기기위해 -50%함 */
+    }
+    .popup .close{
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  </style>
+  </head>
+  <body>
+    <h1>hello</h1>
+    <button id="popshow">POPUP SHOW</button>
+    <div id="popup" class="popup">
+      <div class="inner">
+        <button id="close" class="close">CLOSE</button>
+      </div>
+    </div>
+  <script src="../js/jquery-3.6.0.min.js"></script>
+  <script>
+    $('#popshow').click(function(){
+      $('#popup').show();
+    })
+    $('#close').click(function(){
+      $('#popup').hide();
+    })
+
+  </script>
+</body>
+
+</html>
