@@ -1,0 +1,316 @@
+@charset "UTF-8";
+.area_sort .list_sort:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.blind, caption {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  clip: rect(0, 0, 0, 0);
+  width: 1px;
+  height: 1px;
+  margin-top: -1px;
+  margin-left: -1px;
+  padding: 0;
+  outline: 0;
+  font-size: 1px;
+  overflow: hidden;
+}
+
+.area_additem .button_add, .area_sort .button_sort[aria-selected="true"], .area_list .update .button_update {
+  background: #ff5000;
+  color: #fff;
+}
+
+.area_additem, .area_sort, .area_list {
+  border: solid #d8d8d8;
+  border-width: 0 1px;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+section, article, aside, nav, main, header, footer, figure {
+  display: block;
+}
+
+p, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, table, th, td, form, fieldset, legend, input, textarea, button, select, figure {
+  margin: 0;
+  padding: 0;
+}
+
+body, input, textarea, select, button, table, a {
+  font-family: "Helvetica Neue", "Helvetica", "Apple SD Gothic Neo", "Arial", "Malgun Gothic", "맑은 고딕", "Dotum", "돋움", sans-serif;
+  line-height: 1.2;
+  font-size: 16px;
+  color: #222;
+  -webkit-text-size-adjust: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+form, fieldset, button, img {
+  border: 0;
+  vertical-align: top;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+em, address {
+  font-style: normal;
+}
+
+a, a:hover, a:active, a:focus, abbr, acronym {
+  text-decoration: none;
+}
+
+input, select {
+  vertical-align: middle;
+}
+
+input[type="text"] {
+  -webkit-appearance: none;
+  -webkit-text-size-adjust: none;
+  -webkit-border-radius: 0;
+          border-radius: 0;
+  border: 0;
+}
+
+input::-ms-clear, input::-ms-reveal {
+  display: none;
+}
+
+input[type='submit'], input[type='reset'] {
+  border: 0;
+  cursor: pointer;
+}
+
+input[type='search']::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+button {
+  background-color: transparent;
+  cursor: pointer;
+}
+
+button[disabled] {
+  cursor: default;
+}
+
+.wrap {
+  max-width: 768px;
+  height: 100%;
+  margin: 0 auto;
+  background: #f0f0f0;
+}
+
+.wrap.is_fixed .area_additem {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  width: 100%;
+  max-width: 768px;
+}
+
+.wrap.is_fixed .area_sort {
+  margin-top: 40px;
+}
+
+.area_additem {
+  position: relative;
+  height: 40px;
+  background: #fff;
+}
+
+.area_additem:after {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -11px;
+  height: 10px;
+  border-top: 1px solid #d8d8d8;
+  background: -webkit-gradient(linear, left top, left bottom, from(#d8d8d8), to(transparent));
+  background: -webkit-linear-gradient(#d8d8d8, transparent);
+  background: linear-gradient(#d8d8d8, transparent);
+  content: '';
+}
+
+.area_additem .row {
+  display: table;
+  width: 100%;
+}
+
+.area_additem [class^="col"] {
+  position: relative;
+  display: table-cell;
+  height: 40px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  vertical-align: top;
+}
+
+.area_additem .col_select {
+  width: 80px;
+}
+
+.area_additem .col_button {
+  width: 80px;
+}
+
+.area_additem .select_important {
+  width: 60px;
+  height: 20px;
+  margin: 10px 0 0 5px;
+  font-size: 12px;
+}
+
+.area_additem .input_todo {
+  width: 100%;
+  height: 40px;
+}
+
+.area_additem .input_todo::-webkit-input-placeholder {
+  line-height: 40px;
+}
+
+.area_additem .input_todo::-moz-placeholder {
+  line-height: 40px;
+}
+
+.area_additem .input_todo:-ms-input-placeholder {
+  line-height: 40px;
+}
+
+.area_additem .input_todo:-moz-placeholder {
+  line-height: 40px;
+}
+
+.area_additem .button_add {
+  width: 100%;
+  line-height: 40px;
+  font-size: 14px;
+}
+
+.area_sort {
+  padding: 4px 8px 16px;
+}
+
+.area_sort .list_sort {
+  margin-top: 4px;
+}
+
+.area_sort .item_sort {
+  float: left;
+  margin-right: 3px;
+}
+
+.area_sort .button_sort {
+  padding: 4px;
+  background: #fff;
+  border: 1px solid #ccc;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 12px;
+}
+
+.area_list {
+  border-top: 1px solid #ccc;
+}
+
+.area_list .item_todo {
+  position: relative;
+  padding: 12px 50px 14px 45px;
+  background: #fff;
+  border-bottom: 1px solid #ccc;
+}
+
+.area_list .item_todo[data-finish*="yes"] .view .text {
+  text-decoration: line-through;
+}
+
+.area_list .view .info {
+  display: block;
+  font-size: 12px;
+  color: #aaa;
+}
+
+.area_list .view .text {
+  position: relative;
+  z-index: 1;
+  font-size: 14px;
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+.area_list .update {
+  position: relative;
+  z-index: 1;
+}
+
+.area_list .update .label_important {
+  font-size: 14px;
+}
+
+.area_list .update .select_update_important {
+  font-size: 12px;
+}
+
+.area_list .update .update_text {
+  position: relative;
+  margin-top: 4px;
+  padding-right: 59px;
+}
+
+.area_list .update .input_update {
+  width: 100%;
+  height: 30px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 12px;
+}
+
+.area_list .update .button_update {
+  position: absolute;
+  top: 0;
+  right: 8px;
+  width: 45px;
+  height: 30px;
+  font-size: 13px;
+}
+
+.area_list .check .checkbox_todo {
+  position: absolute;
+  top: 50%;
+  left: 13px;
+  margin-top: -7px;
+}
+
+.area_list .check .label_todo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.area_list .position .button_position {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 41px;
+  background: #c0c0c0;
+}
+
+/*# sourceMappingURL=maps/todolist.css.map */

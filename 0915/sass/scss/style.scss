@@ -1,0 +1,32 @@
+$mainColor:red;
+//import해서 변수화 가능 
+
+@mixin scrollX {
+  overflow-y: hidden;
+  white-space: nowrap;
+
+  &::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+  }
+}
+body{
+  background-color: lightblue;
+
+  h1{
+    color: blue;
+    // color: red($color: #000000);
+    a{
+      color: $mainColor;
+      .pclass{
+        font-size: 50px;
+      }
+    }
+  }
+  div{
+    @include scrollX;
+  }
+  form{
+    @include scrollX;
+  }
+}

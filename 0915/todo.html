@@ -1,0 +1,292 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="./todo.css">
+<title>Todo List</title>
+</head>
+<body>
+
+	<div class="wrap">
+
+		<h1 class="blind">TO-DO LIST</h1>
+
+		<!-- 스킵 네비게이션 -->
+		<div id="u_skip" class="blind">
+			<h2>스킵 네비게이션</h2>
+			<ul>
+				<li><a href="#header">헤더로 바로가기</a></li>
+				<li><a href="#content">본문으로 바로가기</a></li>
+			</ul>
+		</div>
+		<!-- //스킵 네비게이션 -->
+
+		<!-- TO-DO 입력 -->
+		<div class="area_additem">
+			<h2 class="blind">TO-DO 입력</h2>
+			<div class="row">
+				<div class="col_select">
+					<label for="selectImportant" class="blind">중요도를 선택하세요.</label>
+					<select id="selectImportant" class="select_important">
+						<optgroup label="중요도">
+							<option value="veryimportant">매우 중요</option>
+							<option value="important">중요</option>
+							<option value="normal">보통</option>
+						</optgroup>
+					</select>
+				</div>
+				<div class="col_input">
+					<label for="inputTodo" class="blind">할 일을 입력하세요.</label>
+					<input type="text" id="inputTodo" class="input_todo" placeholder="할 일을 입력하세요.">
+				</div>
+				<div class="col_button">
+					<button id="buttonAdd" class="button_add">추가</button>
+				</div>
+			</div>
+		</div>
+		<!-- //TO-DO 입력 -->
+
+		<!-- 데이터 필터링 -->
+		<div class="area_sort">
+			<h2 class="blind">데이터 필터링</h2>
+			<h3 class="blind">중요도 필터링</h3>
+			<!-- [D] 해당 옵션 선택 aria-selected="true" / 비선택 aria-selected="false" -->
+			<ul class="list_sort">
+				<li class="item_sort"><button id="buttonSortAllimportant" class="button_sort" aria-selected="true">모두</button></li>
+				<li class="item_sort"><button id="buttonSortVeryimportant" class="button_sort" aria-selected="false">매우 중요</button></li>
+				<li class="item_sort"><button id="buttonSortImportant" class="button_sort" aria-selected="false">중요</button></li>
+				<li class="item_sort"><button id="buttonSortNoimportant" class="button_sort" aria-selected="false">보통</button></li>
+			</ul>
+			<h3 class="blind">완료여부 필터링</h3>
+			<ul class="list_sort">
+				<li class="item_sort"><button id="buttonSortAllfinish" class="button_sort" aria-selected="true">모두</button></li>
+				<li class="item_sort"><button id="buttonSortFinish" class="button_sort" aria-selected="false">완료</button></li>
+				<li class="item_sort"><button id="buttonSortNofinish" class="button_sort" aria-selected="false">미완료</button></li>
+			</ul>
+		</div>
+		<!-- //데이터 필터링 -->
+
+		<!-- TO-DO 리스트 -->
+		<main id="content" class="area_list">
+			<h2 class="blind">TO-DO 리스트</h2>
+			<ul class="list_todo">
+				<li id="todo_1" class="item_todo" data-status="view" data-important="veryimportant" data-finish="yes">
+					<div class="view">
+						<h3 class="blind">TO-DO 확인하기</h3>
+						<span class="info">중요도: <em class="important">매우 중요</em></span>
+						<span class="info">추가일: <em class="date">2022.6.1.</em></span>
+						<p class="text">세탁소에서 세탁물 찾아오기</p><!-- [D] 텍스트를 클릭하면 수정 가능 -->
+						<button class="blind">수정하기</button><!-- [D] 대체 버튼 제공 -->
+					</div>
+					<div class="update">
+						<h3 class="blind">TO-DO 수정하기</h3>
+						<div class="update_important">
+							<label for="updateImportant_1" class="label_important">중요도<span class="blind">를 선택하세요.</span>:</label>
+							<select id="updateImportant_1" class="select_update_important">
+								<option value="veryimportant" selected>매우 중요</option>
+								<option value="important">중요</option>
+								<option value="normal">보통</option>
+							</select>
+						</div>
+						<div class="update_text">
+							<label for="inputUpdate_1" class="blind">수정할 내용을 입력하세요.</label>
+							<input type="text" id="inputUpdate_1" class="input_update" value="세탁소에서 세탁물 찾아오기">
+							<button class="button_update">수정<span class="blind">한 내용 저장하기</span></button>
+						</div>
+					</div>
+					<div class="check">
+						<h3 class="blind">TO-DO 상태 변경하기</h3>
+						<input type="checkbox" id="checkTodo_1" class="checkbox_todo" checked>
+						<label for="checkTodo_1" class="label_todo"><span class="blind">이 TO-DO를 상태(완료/미완료)를 변경하려면 클릭 또는 터치하세요.</span></label>
+					</div>
+					<div class="position">
+						<h3 class="blind">TO-DO 위치 변경하기</h3>
+						<em class="button_position"><span class="blind">TO-DO의 위치를 변경하려면 이 버튼을 드래그 앤 드랍 하세요.</span></em>
+					</div>
+				</li>
+				<li id="todo_2" class="item_todo" data-status="view" data-important="important" data-finish="no">
+					<div class="view">
+						<h3 class="blind">TO-DO 확인하기</h3>
+						<span class="info">중요도: <em class="important">중요</em></span>
+						<span class="info">추가일: <em class="date">2022.6.1.</em></span>
+						<p class="text">세탁소에서 세탁물 찾아오기</p><!-- [D] 텍스트를 클릭하면 수정 가능 -->
+						<button class="blind">수정하기</button><!-- [D] 대체 버튼 제공 -->
+					</div>
+					<div class="update">
+						<h3 class="blind">TO-DO 수정하기</h3>
+						<div class="update_important">
+							<label for="updateImportant_2" class="label_important">중요도<span class="blind">를 선택하세요.</span>:</label>
+							<select id="updateImportant_2" class="select_update_important">
+								<option value="veryimportant">매우 중요</option>
+								<option value="important" selected>중요</option>
+								<option value="normal">보통</option>
+							</select>
+						</div>
+						<div class="update_text">
+							<label for="inputUpdate_2" class="blind">수정할 내용을 입력하세요.</label>
+							<input type="text" id="inputUpdate_2" class="input_update" value="세탁소에서 세탁물 찾아오기">
+							<button class="button_update">수정<span class="blind">한 내용 저장하기</span></button>
+						</div>
+					</div>
+					<div class="check">
+						<h3 class="blind">TO-DO 상태 변경하기</h3>
+						<input type="checkbox" id="checkTodo_2" class="checkbox_todo">
+						<label for="checkTodo_2" class="label_todo"><span class="blind">이 TO-DO를 상태(완료/미완료)를 변경하려면 클릭 또는 터치하세요.</span></label>
+					</div>
+					<div class="position">
+						<h3 class="blind">TO-DO 위치 변경하기</h3>
+						<em class="button_position"><span class="blind">TO-DO의 위치를 변경하려면 이 버튼을 드래그 앤 드랍 하세요.</span></em>
+					</div>
+				</li>
+				<li id="todo_3" class="item_todo" data-status="view" data-important="normal" data-finish="no">
+					<div class="view">
+						<h3 class="blind">TO-DO 확인하기</h3>
+						<span class="info">중요도: <em class="important">보통</em></span>
+						<span class="info">추가일: <em class="date">2022.6.1.</em></span>
+						<p class="text">세탁소에서 세탁물 찾아오기</p><!-- [D] 텍스트를 클릭하면 수정 가능 -->
+						<button class="blind">수정하기</button><!-- [D] 대체 버튼 제공 -->
+					</div>
+					<div class="update">
+						<h3 class="blind">TO-DO 수정하기</h3>
+						<div class="update_important">
+							<label for="updateImportant_3" class="label_important">중요도<span class="blind">를 선택하세요.</span>:</label>
+							<select id="updateImportant_3" class="select_update_important">
+								<option value="veryimportant">매우 중요</option>
+								<option value="important">중요</option>
+								<option value="normal" selected>보통</option>
+							</select>
+						</div>
+						<div class="update_text">
+							<label for="inputUpdate_3" class="blind">수정할 내용을 입력하세요.</label>
+							<input type="text" id="inputUpdate_3" class="input_update" value="세탁소에서 세탁물 찾아오기">
+							<button class="button_update">수정<span class="blind">한 내용 저장하기</span></button>
+						</div>
+					</div>
+					<div class="check">
+						<h3 class="blind">TO-DO 상태 변경하기</h3>
+						<input type="checkbox" id="checkTodo_3" class="checkbox_todo">
+						<label for="checkTodo_3" class="label_todo"><span class="blind">이 TO-DO를 상태(완료/미완료)를 변경하려면 클릭 또는 터치하세요.</span></label>
+					</div>
+					<div class="position">
+						<h3 class="blind">TO-DO 위치 변경하기</h3>
+						<em class="button_position"><span class="blind">TO-DO의 위치를 변경하려면 이 버튼을 드래그 앤 드랍 하세요.</span></em>
+					</div>
+				</li>
+				<li id="todo_4" class="item_todo" data-status="view" data-important="veryimportant" data-finish="no">
+					<div class="view">
+						<h3 class="blind">TO-DO 확인하기</h3>
+						<span class="info">중요도: <em class="important">매우 중요</em></span>
+						<span class="info">추가일: <em class="date">2022.6.1.</em></span>
+						<p class="text">세탁소에서 세탁물 찾아오기</p><!-- [D] 텍스트를 클릭하면 수정 가능 -->
+						<button class="blind">수정하기</button><!-- [D] 대체 버튼 제공 -->
+					</div>
+					<div class="update">
+						<h3 class="blind">TO-DO 수정하기</h3>
+						<div class="update_important">
+							<label for="updateImportant_4" class="label_important">중요도<span class="blind">를 선택하세요.</span>:</label>
+							<select id="updateImportant_4" class="select_update_important">
+								<option value="veryimportant" selected>매우 중요</option>
+								<option value="important">중요</option>
+								<option value="normal">보통</option>
+							</select>
+						</div>
+						<div class="update_text">
+							<label for="inputUpdate_4" class="blind">수정할 내용을 입력하세요.</label>
+							<input type="text" id="inputUpdate_4" class="input_update" value="세탁소에서 세탁물 찾아오기">
+							<button class="button_update">수정<span class="blind">한 내용 저장하기</span></button>
+						</div>
+					</div>
+					<div class="check">
+						<h3 class="blind">TO-DO 상태 변경하기</h3>
+						<input type="checkbox" id="checkTodo_4" class="checkbox_todo">
+						<label for="checkTodo_4" class="label_todo"><span class="blind">이 TO-DO를 상태(완료/미완료)를 변경하려면 클릭 또는 터치하세요.</span></label>
+					</div>
+					<div class="position">
+						<h3 class="blind">TO-DO 위치 변경하기</h3>
+						<em class="button_position"><span class="blind">TO-DO의 위치를 변경하려면 이 버튼을 드래그 앤 드랍 하세요.</span></em>
+					</div>
+				</li>
+				<li id="todo_5" class="item_todo" data-status="view" data-important="important" data-finish="no">
+					<div class="view">
+						<h3 class="blind">TO-DO 확인하기</h3>
+						<span class="info">중요도: <em class="important">중요</em></span>
+						<span class="info">추가일: <em class="date">2022.6.1.</em></span>
+						<p class="text">세탁소에서 세탁물 찾아오기</p><!-- [D] 텍스트를 클릭하면 수정 가능 -->
+						<button class="blind">수정하기</button><!-- [D] 대체 버튼 제공 -->
+					</div>
+					<div class="update">
+						<h3 class="blind">TO-DO 수정하기</h3>
+						<div class="update_important">
+							<label for="updateImportant_5" class="label_important">중요도<span class="blind">를 선택하세요.</span>:</label>
+							<select id="updateImportant_5" class="select_update_important">
+								<option value="veryimportant">매우 중요</option>
+								<option value="important" selected>중요</option>
+								<option value="normal">보통</option>
+							</select>
+						</div>
+						<div class="update_text">
+							<label for="inputUpdate_5" class="blind">수정할 내용을 입력하세요.</label>
+							<input type="text" id="inputUpdate_5" class="input_update" value="세탁소에서 세탁물 찾아오기">
+							<button class="button_update">수정<span class="blind">한 내용 저장하기</span></button>
+						</div>
+					</div>
+					<div class="check">
+						<h3 class="blind">TO-DO 상태 변경하기</h3>
+						<input type="checkbox" id="checkTodo_5" class="checkbox_todo">
+						<label for="checkTodo_5" class="label_todo"><span class="blind">이 TO-DO를 상태(완료/미완료)를 변경하려면 클릭 또는 터치하세요.</span></label>
+					</div>
+					<div class="position">
+						<h3 class="blind">TO-DO 위치 변경하기</h3>
+						<em class="button_position"><span class="blind">TO-DO의 위치를 변경하려면 이 버튼을 드래그 앤 드랍 하세요.</span></em>
+					</div>
+				</li>
+				<li id="todo_6" class="item_todo" data-status="view" data-important="normal" data-finish="no">
+					<div class="view">
+						<h3 class="blind">TO-DO 확인하기</h3>
+						<span class="info">중요도: <em class="important">보통</em></span>
+						<span class="info">추가일: <em class="date">2022.6.1.</em></span>
+						<p class="text">세탁소에서 세탁물 찾아오기</p><!-- [D] 텍스트를 클릭하면 수정 가능 -->
+						<button class="blind">수정하기</button><!-- [D] 대체 버튼 제공 -->
+					</div>
+					<div class="update">
+						<h3 class="blind">TO-DO 수정하기</h3>
+						<div class="update_important">
+							<label for="updateImportant_6" class="label_important">중요도<span class="blind">를 선택하세요.</span>:</label>
+							<select id="updateImportant_6" class="select_update_important">
+								<option value="veryimportant">매우 중요</option>
+								<option value="important">중요</option>
+								<option value="normal" selected>보통</option>
+							</select>
+						</div>
+						<div class="update_text">
+							<label for="inputUpdate_6" class="blind">수정할 내용을 입력하세요.</label>
+							<input type="text" id="inputUpdate_6" class="input_update" value="세탁소에서 세탁물 찾아오기">
+							<button class="button_update">수정<span class="blind">한 내용 저장하기</span></button>
+						</div>
+					</div>
+					<div class="check">
+						<h3 class="blind">TO-DO 상태 변경하기</h3>
+						<input type="checkbox" id="checkTodo_6" class="checkbox_todo">
+						<label for="checkTodo_6" class="label_todo"><span class="blind">이 TO-DO를 상태(완료/미완료)를 변경하려면 클릭 또는 터치하세요.</span></label>
+					</div>
+					<div class="position">
+						<h3 class="blind">TO-DO 위치 변경하기</h3>
+						<em class="button_position"><span class="blind">TO-DO의 위치를 변경하려면 이 버튼을 드래그 앤 드랍 하세요.</span></em>
+					</div>
+				</li>
+			</ul>
+		</main>
+		<!-- //TO-DO 리스트 -->
+
+	</div>
+	<!-- //wrap -->
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+<script src="./todo.js"></script>
+
+</body>
+</html>

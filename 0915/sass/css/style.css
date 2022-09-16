@@ -1,0 +1,28 @@
+body {
+  background-color: lightblue;
+}
+body h1 {
+  color: blue;
+}
+body h1 a {
+  color: red;
+}
+body h1 a .pclass {
+  font-size: 50px;
+}
+body div {
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+body div::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+body form {
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+body form::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}/*# sourceMappingURL=style.css.map */
